@@ -101,6 +101,22 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
         printf("Failed to find cGame\n");
     }
 
+    auto SpeedMultiplier = Scan((char*)"F3 0F 10 05 ? ? ? ? F3 0F 59 81 ? ? ? ? C3 48 8D 64 24 ? 48 8B 4C 24 ? E9 ? ? ? ?", (char*)Dump, size);
+
+    if (SpeedMultiplier)
+    {
+        printf("Found SpeedMultiplier\n");
+        ULONG32 FoundRelativeOffset = *(int*)(SpeedMultiplier + 4);
+        auto RelativeOffset = ((ULONG64)SpeedMultiplier - (ULONG64)Dump) + 0xA00; //for some reason, addresses are off by 0xA00 bytes i have no clue why, assuming its something to do with vector bullshit or the way i read the program
+        ULONG64 Address = (ULONG64)(RelativeOffset + FoundRelativeOffset + 8);
+        myfile << std::hex << "constexpr std::ptrdiff_t SpeedMultiplier : 0x" << Address << ";\n";
+        printf("\t[+]Offset : 0x%x\n", ((char*)Address));
+    }
+    else
+    {
+        printf("Failed to find SpeedMultiplier\n");
+    }
+
     auto FirstObject = Scan((char*)"48 8B 81 ? ? ? ? C3 4A A7 B6 40 01 ? ? ? 48 8B 81 D0 25 ? ?", (char*)Dump, size);
 
     if (FirstObject)
