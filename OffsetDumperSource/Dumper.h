@@ -8,11 +8,7 @@
 #include <fstream>
 #include <filesystem>
 
-struct Offset
-{
-	std::string Name;
-	BYTE* Offset[];
-};
+
 namespace Dumper
 {
 	bool ReadProgramIntoMemory(std::string DumpPath, std::vector<uint8_t>* out_buffer);
