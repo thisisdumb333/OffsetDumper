@@ -235,9 +235,10 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
         printf("Failed to find vec2ViewAngle\n");
     }
 
-    auto cActor = Scan((char*)"48 8B ? ? ? ? ? C7 04 24 ? ? ? ? 48 89 ? 48 85 ? 74 ? 48 8B ? ? F0 FF ? ? F0 FF ? 48 8B ? 48 83 C4 ? C3 48 B8", (char*)Dump, size);
+    auto cActor = Scan((char*)"48 8B 81 ? ? ? ? 48 85 C0 74 0C 8B 80 ? ? ? ? 89 02 48 8B C2 C3 C7 02 ? ? ? ? 48 8B C2 C3 ", (char*)Dump, size);
     if (cActor)
     {
+
         printf("Found cActor\n");
         auto offset = *(int*)(cActor + 3);
         printf("\t[+]Offset = 0x%x\n", offset);
