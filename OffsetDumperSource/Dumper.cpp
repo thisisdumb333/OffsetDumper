@@ -93,8 +93,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
         ULONG32 FoundRelativeOffset = *(int*)(cGame + 3);
         auto RelativeOffset = ((ULONG64)cGame - (ULONG64)Dump) + 0xA00; //for some reason, addresses are off by 0xA00 bytes i have no clue why, assuming its something to do with vector bullshit or the way i read the program
         ULONG64 Address = (ULONG64)(RelativeOffset + FoundRelativeOffset + 7);
-        myfile << std::hex << "constexpr std::ptrdiff_t cGamePtr : 0x" << Address << ";\n";
-        printf("\t[+]Offset : 0x%x\n", ((char*)Address));
+        myfile << std::hex << "constexpr std::ptrdiff_t cGamePtr = 0x" << Address << ";\n";
+        printf("\t[+]Offset = 0x%x\n", ((char*)Address));
     }
     else
     {
@@ -109,8 +109,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
         ULONG32 FoundRelativeOffset = *(int*)(SpeedMultiplier + 4);
         auto RelativeOffset = ((ULONG64)SpeedMultiplier - (ULONG64)Dump) + 0xA00; //for some reason, addresses are off by 0xA00 bytes i have no clue why, assuming its something to do with vector bullshit or the way i read the program
         ULONG64 Address = (ULONG64)(RelativeOffset + FoundRelativeOffset + 8);
-        myfile << std::hex << "constexpr std::ptrdiff_t SpeedMultiplier : 0x" << Address << ";\n";
-        printf("\t[+]Offset : 0x%x\n", ((char*)Address));
+        myfile << std::hex << "constexpr std::ptrdiff_t SpeedMultiplier = 0x" << Address << ";\n";
+        printf("\t[+]Offset = 0x%x\n", ((char*)Address));
     }
     else
     {
@@ -123,8 +123,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found FirstObject\n");
         auto offset = *(int*)(FirstObject + 3);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t FirstObject : 0x" << offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t FirstObject = 0x" << offset << ";\n";
 
     }
     else
@@ -138,8 +138,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found cGraphics\n");
         auto offset = *(int*)(cGraphics + 3);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t cGraphics : 0x" << offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t cGraphics = 0x" << offset << ";\n";
 
     }
     else
@@ -157,8 +157,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found PlayerStance\n");
         auto offset = *(int*)(PlayerStance + 2);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t PlayerStance : 0x" << offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t PlayerStance = 0x" << offset << ";\n";
 
     }
     else
@@ -171,8 +171,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found PlayerBase\n");
         auto offset = *(int*)(PlayerBase + 3);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t PlayerBase : 0x" << offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t PlayerBase = 0x" << offset << ";\n";
 
     }
     else
@@ -185,8 +185,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found PlayerType\n");
         auto offset = *(int*)(PlayerType + 2);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t PlayerType : 0x" << offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t PlayerType = 0x" << offset << ";\n";
 
     }
     else
@@ -199,8 +199,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found PlayerTeam\n");
         auto offset = *(int*)(PlayerTeam + 2);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t PlayerTeam : 0x" << offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t PlayerTeam = 0x" << offset << ";\n";
 
     }
     else
@@ -213,8 +213,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found NextObject\n");
         auto offset = *(int*)(NextObject + 3);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t NextObject : 0x" << offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t NextObject = 0x" << offset << ";\n";
 
     }
     else
@@ -227,8 +227,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found vec2ViewAngle\n");
         auto offset = *(int*)(vec2ViewAngle + 5);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t vec2ViewAngle : 0x" << (int)offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t vec2ViewAngle = 0x" << (int)offset << ";\n";
     }
     else
     {
@@ -240,8 +240,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found cActor\n");
         auto offset = *(int*)(cActor + 3);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t cActor : 0x" << offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t cActor = 0x" << offset << ";\n";
 
     }
     else
@@ -254,8 +254,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found cSkelaton\n");
         auto offset = *(int*)(cSkelaton + 3);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t cSkelaton : 0x" << offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t cSkelaton = 0x" << offset << ";\n";
 
     }
     else
@@ -268,8 +268,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found cSkelatonInfo\n");
         auto offset = *(char*)(cSkelatonInfo + 3);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t cSkelatonInfo : 0x" << (int)offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t cSkelatonInfo = 0x" << (int)offset << ";\n";
 
     }
     else
@@ -282,8 +282,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
     {
         printf("Found cBoneInfo\n");
         auto offset = *(char*)(cBoneInfo + 3);
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t cBoneInfo : 0x" << (int)offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t cBoneInfo = 0x" << (int)offset << ";\n";
     }
     else
     {
@@ -297,8 +297,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
         printf("Found cCamera\n");
         auto offset = *(char*)(cCamera + 0x3);
 
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t cCamera : 0x" << (int)offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t cCamera = 0x" << (int)offset << ";\n";
 
     }
     else
@@ -312,8 +312,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
         printf("Found cMatrix\n");
         auto offset = *(char*)(cMatrix + 0x3);
 
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t cMatrix : 0x" << (int)offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t cMatrix = 0x" << (int)offset << ";\n";
 
     }
     else
@@ -327,8 +327,8 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
         printf("Found vec4ViewMatrix\n");
         auto offset = *(int*)(vec4ViewMatrix + 3);
 
-        printf("\t[+]Offset : 0x%x\n", offset);
-        myfile << std::hex << "constexpr std::ptrdiff_t vec4ViewMatrix : 0x" << offset << ";\n";
+        printf("\t[+]Offset = 0x%x\n", offset);
+        myfile << std::hex << "constexpr std::ptrdiff_t vec4ViewMatrix = 0x" << offset << ";\n";
 
     }
     else
