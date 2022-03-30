@@ -101,7 +101,7 @@ bool Dumper::DumpOffsets(BYTE* Dump, size_t size)
         printf("Failed to find cGame\n");
     }
 
-    auto SpeedMultiplier = Scan((char*)"F3 0F ? ? ? ? ? ? C3 CC C2", (char*)Dump, size);
+    auto SpeedMultiplier = Scan((char*)"F3 0F 10 05 ? ? ? ? 0F 57 C9 0F 2E C1 75 10 F3 0F 10 05 ? ? ? ? F3 0F 59 81 ? ? ? ? C3 48 8D 64 24 ? 48 8B 44 24 ? E9 ? ? ? ? 48 83 EC 28 48 8B 81 ? ? ? ? 48 8D 54 24 ? 48 8B 0D ? ? ? ? 48 89 44 24 ?", (char*)Dump, size);
 
     if (SpeedMultiplier)
     {
